@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 
 def get_chrom_sizes(chrom_sizes_file) -> dict:
+    r'''
+    Adapted from https://github.com/wconnell/enformer-finetune/blob/c2145a628efcb91b932cc063a658e4a994bc4baa/eft/preprocess.py
+    '''
     chrom_sizes = {}
     with open(chrom_sizes_file, "r") as f:
         for line in f:
