@@ -1,0 +1,4 @@
+torch
+pyfaidx
+pyBigWig == 0.3.22
+
