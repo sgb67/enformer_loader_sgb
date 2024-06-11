@@ -14,6 +14,7 @@ def test_genome_data_interval_dataset():
     assert dataset[0][1].shape == (4, 1)
     chrom = dataset.int_to_chr[dataset[0][2][0].item()]
     assert chrom in all_chroms
+    # Test extend_seq
     dataset = efl.GenomeDataIntervalDataset(
         all_chroms, extend_seq=20, bed_file=bed_file_path,
         fasta_file=fasta_file_path)
