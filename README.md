@@ -20,7 +20,9 @@ If you are in the root directory of the repo, try running the following command 
 ```python
 python enformer_loader/scripts/generate_dataset.py \
     tests/data/chrom_sizes.txt tests/data/test.bw 100 \
-        tests/data/test_dataset.bed --n_bins 2 --bin_size 20
+        tests/data/test_dataset.bed --n_bins 2 --bin_size 20 \
+            --padding 20 --seed 1337 \
+                --exclude_list_path tests/data/exclude_chroms.txt
 ```
 Run `python enformer_loader/scripts/generate_dataset.py --help` to see what the arguments are.
 Example output (first few lines):
