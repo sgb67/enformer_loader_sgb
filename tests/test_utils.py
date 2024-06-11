@@ -4,7 +4,7 @@ import enformer_loader as efl
 
 def test_get_chrom_sizes():
     chrom_sizes = efl.get_chrom_sizes("tests/data/chrom_sizes.txt")
-    assert chrom_sizes == {'chr1': 1000, 'chr2': 556}
+    assert chrom_sizes == {'chr1': 1000, 'chr2': 556, 'chr3': 1000}
 
 
 def test_avg_bin():
@@ -27,7 +27,7 @@ def test_random_region():
     bw_file_path = "tests/data/test.bw"
     bw_file = pyBigWig.open(bw_file_path)
     chrom, start, end, values = efl.random_region(
-        chrom_sizes, bw_file, p=[1, 0], SEQ_LEN=100)
+        chrom_sizes, bw_file, p=[1, 0, 0], SEQ_LEN=100)
     print(f'{chrom}:{start}-{end}')
     assert chrom in chrom_sizes.keys()
     assert start >= 0
