@@ -59,12 +59,15 @@ def get_bw_signal(bw_file, chrom, start, end, SEQ_LEN=114688):
     return values
 
 
-def random_region(chrom_sizes, bw_file, p=None, SEQ_LEN=114688):
+def random_region(chrom_sizes, bw_file, p=None, SEQ_LEN=114688, padding=0):
     """
     Get a random region from the genome.
     """
     chrom = np.random.choice(list(chrom_sizes.keys()), p=p)
-    start = np.random.randint(0, chrom_sizes[chrom] - SEQ_LEN)
+    # Make sure that the start position is at least padding away from the
+    # beginning / end of the chromosome
+    start = np.random.randint(0 + padding,
+                              chrom_sizes[chrom] - SEQ_LEN - padding)
     end = start + SEQ_LEN
     values = get_bw_signal(bw_file, chrom, start, end, SEQ_LEN)
     return chrom, start, end, values
