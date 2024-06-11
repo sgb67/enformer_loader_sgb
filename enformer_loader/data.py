@@ -4,14 +4,22 @@ from enformer_pytorch import GenomeIntervalDataset
 
 
 class GenomeDataIntervalDataset(GenomeIntervalDataset):
-    def __init__(self, all_chroms, *args, **kwargs):
+    def __init__(self, all_chroms, extend_seq=0, *args, **kwargs):
         """
         Argument all_chroms is a list of chromosomes in the dataset.
-        E.g. ['chr1', 'chr2', ...]
+        E.g. ['chr1', 'chr2', ...].
+
+        Argument extend_seq specifies how many basepairs to extend the sequence
+        on either side by. Default = 0. Note that you might need to specify
+        the data generation process with generate_dataset.py as well so that
+        the sampled regions always have enough padding along the sides of the
+        region to allow for the extend_seq amount. Use argument --padding in
+        those scripts for this.
         """
         super(GenomeDataIntervalDataset, self).__init__(*args, **kwargs)
         self.chr_to_int = dict(zip(all_chroms, range(len(all_chroms))))
         self.int_to_chr = {v: k for k, v in self.chr_to_int.items()}
+        self.extend_seq = extend_seq
 
     def __len__(self):
         return len(self.df)
@@ -23,7 +31,12 @@ class GenomeDataIntervalDataset(GenomeIntervalDataset):
         chr_name = self.chr_bed_to_fasta_map.get(chr_name, chr_name)
         target = ast.literal_eval(target)
         target = torch.tensor(target).unsqueeze(-1)
-        sequence = self.fasta(chr_name, start, end,
+
+        # This will break if you do not leave enough space for the padding:
+        ext_start = start - self.extend_seq
+        ext_end = end + self.extend_seq
+
+        sequence = self.fasta(chr_name, ext_start, ext_end,
                               return_augs=self.return_augs)
         loc = torch.tensor([self.chr_to_int[chr_name], start, end])
         return sequence, target, loc
