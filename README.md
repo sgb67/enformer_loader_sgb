@@ -18,7 +18,7 @@ If you are in the root directory of the repo, try running the following command 
 ```python
 python enformer_loader/scripts/generate_dataset.py \
     tests/data/chrom_sizes.txt tests/data/test.bw 100 \
-        example_outputs/test.bed --n_bins 2 --bin_size 20
+        tests/data/test_dataset.bed --n_bins 2 --bin_size 20
 ```
 Run `python enformer_loader/scripts/generate_dataset.py --help` to see what the arguments are.
 Example output (first few lines):
@@ -49,7 +49,7 @@ To test the script, use the following:
 ```bash
 python enformer_loader/scripts/generate_train_val_dataset.py \
     tests/data/chrom_sizes.txt tests/data/test.bw 40 10 \
-        example_outputs/test_train.bed example_outputs/test_val.bed \
+        tests/data/test_train_dataset.bed tests/data/test_val_dataset.bed \
             tests/data/val_chroms.txt tests/data/exclude_chroms.txt \
                 --n_bins 4 --bin_size 20
 ```
