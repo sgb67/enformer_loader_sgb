@@ -8,7 +8,7 @@ import numpy as np
 
 def get_chrom_sizes(chrom_sizes_file) -> dict:
     """
-    Get chromosome sizes from a file
+    Get chromosome sizes from a file.
     """
     chrom_sizes = {}
     with open(chrom_sizes_file, "r") as f:
@@ -22,7 +22,7 @@ def get_chrom_sizes(chrom_sizes_file) -> dict:
 
 def avg_bin(array, n_bins):
     """
-    Averages array values in n_bins
+    Averages array values in n_bins.
     """
     splitted = np.array_split(array, n_bins)
     return [np.mean(a) for a in splitted]
@@ -30,7 +30,7 @@ def avg_bin(array, n_bins):
 
 def sum_bin(array, n_bins):
     """
-    Sums array values in n_bins
+    Sums array values in n_bins.
     """
     splitted = np.array_split(array, n_bins)
     return [np.sum(a) for a in splitted]
@@ -38,7 +38,15 @@ def sum_bin(array, n_bins):
 
 def get_bw_signal(bw_file, chrom, start, end, SEQ_LEN=114688):
     """
-    Get signal from a bigwig file
+    Get signal from a bigwig file.
+    If the chromosome is not found, return a list of np.nan.
+
+    Arguments:
+    - bw_file: pyBigWig file
+    - chrom: chromosome
+    - start: start position
+    - end: end position
+    - SEQ_LEN: length of the sequence (default: 114688)
     """
     center = (start + end) // 2
     start = center - (SEQ_LEN // 2)
@@ -53,7 +61,7 @@ def get_bw_signal(bw_file, chrom, start, end, SEQ_LEN=114688):
 
 def random_region(chrom_sizes, bw_file, p=None, SEQ_LEN=114688):
     """
-    Get a random region from the genome
+    Get a random region from the genome.
     """
     chrom = np.random.choice(list(chrom_sizes.keys()), p=p)
     start = np.random.randint(0, chrom_sizes[chrom] - SEQ_LEN)
