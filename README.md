@@ -1,9 +1,11 @@
-# Enformer_loader
+# enformer_loader
 
-This repo is made to preprocess `.bigWig` data to be used to finetune Enformer, and to provide Pytorch `DataLoader` structures to do so. Currently only supports prediction of a single track.
+This repo is made to preprocess `.bigWig` data to be used to finetune Enformer, and to provide Pytorch `DataLoader` structures to do so.
+
+Currently only supports prediction of a single track.
 
 ## Acknowledgments
-This repo builds upon the repo [`enformer-finetune`](https://github.com/wconnell/enformer-finetune/tree/c2145a628efcb91b932cc063a658e4a994bc4baa) by `wconnell` (Apache 2.0).
+This repo builds primarily on the work done in the repo [`enformer-finetune`](https://github.com/wconnell/enformer-finetune/tree/c2145a628efcb91b932cc063a658e4a994bc4baa) by `wconnell` (License: Apache 2.0).
 
 ## Installation
 1. Pull the repository and `cd` into the repo directory
