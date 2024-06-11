@@ -54,7 +54,7 @@ def get_bw_signal(bw_file, chrom, start, end, SEQ_LEN=114688):
     try:
         values = bw_file.values(chrom, start, end)
         values = np.nan_to_num(values).tolist()
-    except:
+    except Exception:
         values = [np.nan] * SEQ_LEN
     return values
 
