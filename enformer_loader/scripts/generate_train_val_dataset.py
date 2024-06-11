@@ -8,7 +8,7 @@ from enformer_loader.utils import get_chrom_sizes, sum_bin, random_region
 
 def main(chrom_sizes_file, bw_path, n_seq_train, n_seq_val, output_file_train,
          output_file_val, val_chroms, n_bins=896, bin_size=128,
-         exclude_chroms=None):
+         exclude_chroms=None, padding=0, seed=1337):
     """
     Generates a dataset from a bigwig file. The dataset will contain n_seq_train
     sequences for training and n_seq_val sequences for validation. Argument
@@ -21,6 +21,8 @@ def main(chrom_sizes_file, bw_path, n_seq_train, n_seq_val, output_file_train,
     - end: end position
     - values: list of values in the region
     """
+    np.random.seed(seed)
+
     SEQ_LEN = n_bins * bin_size
 
     bw_file = pyBigWig.open(bw_path)
@@ -49,7 +51,7 @@ def main(chrom_sizes_file, bw_path, n_seq_train, n_seq_val, output_file_train,
         while not found:
             # Sample a region
             chrom, start, end, values = random_region(
-                chrom_sizes, bw_file, sample_probs_train, SEQ_LEN)
+                chrom_sizes, bw_file, sample_probs_train, SEQ_LEN, padding)
             if np.any(np.isnan(values)):
                 continue
             binned_values = sum_bin(values, n_bins)
@@ -75,7 +77,7 @@ def main(chrom_sizes_file, bw_path, n_seq_train, n_seq_val, output_file_train,
         while not found:
             # Sample a region
             chrom, start, end, values = random_region(
-                chrom_sizes, bw_file, sample_probs_val, SEQ_LEN)
+                chrom_sizes, bw_file, sample_probs_val, SEQ_LEN, padding)
             if np.any(np.isnan(values)):
                 print(f'{chrom}:{start}-{end}')
                 continue
@@ -121,6 +123,10 @@ if __name__ == '__main__':
                         help='Number of bins in prediction window (default: 896)')
     parser.add_argument('--bin_size', type=int, default=128,
                         help='Size of each bin (default: 128)')
+    parser.add_argument('--padding', type=int, default=0,
+                        help='Amount of padding to add to each side of the region later (default: 0)')
+    parser.add_argument('--seed', type=int, default=1337,
+                        help='Random seed (default: 1337)')
     args = parser.parse_args()
 
     with open(args.val_chroms_path, "r") as f:
@@ -145,4 +151,6 @@ if __name__ == '__main__':
          val_chroms=val_chroms_list,
          n_bins=args.n_bins,
          bin_size=args.bin_size,
-         exclude_chroms=exclude_list)
+         exclude_chroms=exclude_list,
+         padding=args.padding,
+         seed=args.seed)
