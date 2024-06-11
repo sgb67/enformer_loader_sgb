@@ -16,7 +16,7 @@ This repo builds upon the repo `enformer-finetune` at https://github.com/wconnel
 Use the script `enformer_loader/scripts/generate_dataset.py` to generate a `.bed` file with data. 
 If you are in the root directory of the repo, try running the following command to try it out:
 ```
-python enformer_loader/scripts/generate_dataset.py tests/data/chrom_sizes.txt tests/data/test.bw 100 tmp_out/test.bed --n_bins 2 --bin_size 20
+python enformer_loader/scripts/generate_dataset.py tests/data/chrom_sizes.txt tests/data/test.bw 100 example_outputs/test.bed --n_bins 2 --bin_size 20
 ```
 Run `python enformer_loader/scripts/generate_dataset.py --help` to see what the arguments are.
 Example output (first few lines):
