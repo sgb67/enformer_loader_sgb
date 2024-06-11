@@ -1,6 +1,6 @@
 # Enformer_loader
 
-This directory contains some sample data to be used for the dataloaders for finetuning `enformer_pytorch`.
+This repo is made to preprocess `.bigWig` data to be used to finetune Enformer, and to provide Pytorch `DataLoader` structures to do so. Currently only supports prediction of a single track.
 
 ## Installation
 1. Pull the repository and `cd` into the repo directory
