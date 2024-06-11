@@ -1,5 +1,5 @@
-import enformer_loader as efl
 import pyBigWig
+import enformer_loader as efl
 
 
 def test_get_chrom_sizes():
