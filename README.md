@@ -51,5 +51,9 @@ python enformer_loader/scripts/generate_train_val_dataset.py \
     tests/data/chrom_sizes.txt tests/data/test.bw 40 10 \
         example_outputs/test_train.bed example_outputs/test_val.bed \
             tests/data/val_chroms.txt tests/data/exclude_chroms.txt \
-                --n_bins 2 --bin_size 20
+                --n_bins 4 --bin_size 20
 ```
+
+### `.bw` input
+To create new test input, convert a `.bedGraph` file with `bedGraphToBigWig`
+from `UCSC` tools: see [this guide](https://genome.ucsc.edu/goldenPath/help/bigWig.html).
