@@ -36,17 +36,6 @@ def sum_bin(array, n_bins):
     return [np.sum(a) for a in splitted]
 
 
-def random_region(chrom_sizes, bw_file, p=None, SEQ_LEN=114688):
-    """
-    Get a random region from the genome
-    """
-    chrom = np.random.choice(list(chrom_sizes.keys()), p=p)
-    start = np.random.randint(0, chrom_sizes[chrom] - SEQ_LEN)
-    end = start + SEQ_LEN
-    values = get_bw_signal(bw_file, chrom, start, end)
-    return chrom, start, end, values
-
-
 def get_bw_signal(bw_file, chrom, start, end, SEQ_LEN=114688):
     """
     Get signal from a bigwig file
@@ -60,3 +49,14 @@ def get_bw_signal(bw_file, chrom, start, end, SEQ_LEN=114688):
     except:
         values = [np.nan] * SEQ_LEN
     return values
+
+
+def random_region(chrom_sizes, bw_file, p=None, SEQ_LEN=114688):
+    """
+    Get a random region from the genome
+    """
+    chrom = np.random.choice(list(chrom_sizes.keys()), p=p)
+    start = np.random.randint(0, chrom_sizes[chrom] - SEQ_LEN)
+    end = start + SEQ_LEN
+    values = get_bw_signal(bw_file, chrom, start, end, SEQ_LEN)
+    return chrom, start, end, values
