@@ -37,7 +37,7 @@ def sum_bin(array, n_bins):
     return [np.sum(a) for a in splitted]
 
 
-def random_region(chrom_sizes, bw_file, p=None):
+def random_region(chrom_sizes, bw_file, p=None, SEQ_LEN=114688):
     """
     Get a random region from the genome
     """
@@ -48,7 +48,7 @@ def random_region(chrom_sizes, bw_file, p=None):
     return chrom, start, end, values
 
 
-def get_bw_signal(bw_file, chrom, start, end, SEQ_LEN=1):
+def get_bw_signal(bw_file, chrom, start, end, SEQ_LEN=114688):
     """
     Get signal from a bigwig file
     """
