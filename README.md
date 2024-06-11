@@ -34,7 +34,7 @@ chr1	596	636	[20.0, 20.0]
 
 ### Creating bed files with training and validation data
 In this example scenario, I want to generate a training set that does not
-contain chromosome 3, and a validation set with only chromosome 3.
+contain chromosome 2, and a validation set with only chromosome 2.
 Note this needs inputs of newline-separated text files that specify the 
 chromosomes to be used in the validation set - and one in which you can specify
 chromosomes to omit altogether. Also specify the number of sequences to be
@@ -53,6 +53,9 @@ python enformer_loader/scripts/generate_train_val_dataset.py \
             tests/data/val_chroms.txt tests/data/exclude_chroms.txt \
                 --n_bins 4 --bin_size 20
 ```
+
+For example outputs for training and validation sets, see the `example_outputs/`
+directory.
 
 ### `.bw` input
 To create new test input, convert a `.bedGraph` file with `bedGraphToBigWig`
