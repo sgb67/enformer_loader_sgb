@@ -138,10 +138,7 @@ if __name__ == '__main__':
             for line in f:
                 exclude_list.append(line.strip())
 
-    # TODO add option to set seed
-    # TODO add option to generate non-overlapping sets: train, val, test
     # TODO add option to ignore blacklisted or masked regions
-    # pass exclude_list as a parameter too
     main(chrom_sizes_file=args.chrom_sizes_file,
          bw_path=args.bw_path,
          n_seq_train=args.n_seq_train,

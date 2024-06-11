@@ -53,11 +53,12 @@ python enformer_loader/scripts/generate_train_val_dataset.py \
     tests/data/chrom_sizes.txt tests/data/test.bw 40 10 \
         tests/data/test_train_dataset.bed tests/data/test_val_dataset.bed \
             tests/data/val_chroms.txt tests/data/exclude_chroms.txt \
-                --n_bins 4 --bin_size 20
+                --n_bins 4 --bin_size 20 --padding 20 --seed 1337
 ```
 
 For example outputs for training and validation sets, see the `example_outputs/`
-directory.
+directory. **Note that the output will be the same when `--seed` is set to the**
+**same number**.
 
 ### `.bw` input
 To create new test input, convert a `.bedGraph` file with `bedGraphToBigWig`
