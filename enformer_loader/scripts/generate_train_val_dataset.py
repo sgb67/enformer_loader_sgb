@@ -3,12 +3,12 @@ import pyBigWig
 import pandas as pd
 import numpy as np
 
-from enformer_loader.utils import get_chrom_sizes, sum_bin, random_region
+from enformer_loader.utils import get_chrom_sizes, avg_bin, random_region, sum_bin
 
 
 def main(chrom_sizes_file, bw_path, n_seq_train, n_seq_val, output_file_train,
          output_file_val, val_chroms, n_bins=896, bin_size=128,
-         exclude_chroms=None, padding=0, seed=1337):
+         exclude_chroms=None, padding=0, seed=1337, use_sum=False):
     """
     Generates a dataset from a bigwig file. The dataset will contain n_seq_train
     sequences for training and n_seq_val sequences for validation. Argument
@@ -54,7 +54,10 @@ def main(chrom_sizes_file, bw_path, n_seq_train, n_seq_val, output_file_train,
                 chrom_sizes, bw_file, sample_probs_train, SEQ_LEN, padding)
             if np.any(np.isnan(values)):
                 continue
-            binned_values = sum_bin(values, n_bins)
+            if use_sum:
+                binned_values = sum_bin(values, n_bins)
+            else:
+                binned_values = avg_bin(values, n_bins)
 
             # Do not include regions where all values are 0
             if not np.all(np.array(binned_values) == 0) and chrom not in val_chroms:
@@ -81,7 +84,10 @@ def main(chrom_sizes_file, bw_path, n_seq_train, n_seq_val, output_file_train,
             if np.any(np.isnan(values)):
                 print(f'{chrom}:{start}-{end}')
                 continue
-            binned_values = sum_bin(values, n_bins)
+            if use_sum:
+                binned_values = sum_bin(values, n_bins)
+            else:
+                binned_values = avg_bin(values, n_bins)
 
             # Do not include regions where all values are 0
             if not np.all(np.array(binned_values) == 0) and chrom in val_chroms:
@@ -127,6 +133,8 @@ if __name__ == '__main__':
                         help='Amount of padding to add to each side of the region later (default: 0)')
     parser.add_argument('--seed', type=int, default=1337,
                         help='Random seed (default: 1337)')
+    parser.add_argument('--use_sum', action='store_true',
+                        help='Sum within each bin instead of average')
     args = parser.parse_args()
 
     with open(args.val_chroms_path, "r") as f:
@@ -150,4 +158,5 @@ if __name__ == '__main__':
          bin_size=args.bin_size,
          exclude_chroms=exclude_list,
          padding=args.padding,
-         seed=args.seed)
+         seed=args.seed,
+         use_sum=args.use_sum)

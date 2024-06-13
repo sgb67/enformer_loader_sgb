@@ -3,11 +3,11 @@ import pyBigWig
 import pandas as pd
 import numpy as np
 
-from enformer_loader.utils import get_chrom_sizes, sum_bin, random_region
+from enformer_loader.utils import get_chrom_sizes, sum_bin, random_region, avg_bin
 
 
 def main(chrom_sizes_file, bw_path, n_seq, output_file, exclude_list_path=None,
-         n_bins=896, bin_size=128, padding=0, seed=1337):
+         n_bins=896, bin_size=128, padding=0, seed=1337, use_sum=False):
     np.random.seed(seed)
 
     SEQ_LEN = n_bins * bin_size
@@ -33,7 +33,10 @@ def main(chrom_sizes_file, bw_path, n_seq, output_file, exclude_list_path=None,
                 chrom_sizes, bw_file, sample_probs, SEQ_LEN, padding=padding)
             if np.any(np.isnan(values)):
                 continue
-            binned_values = sum_bin(values, n_bins)
+            if use_sum:
+                binned_values = sum_bin(values, n_bins)
+            else:
+                binned_values = avg_bin(values, n_bins)
 
             # Do not include regions where all values are 0
             if not np.all(np.array(binned_values) == 0):
@@ -73,6 +76,8 @@ if __name__ == '__main__':
                         help='Amount of padding to add to each side of the region later (default: 0)')
     parser.add_argument('--seed', type=int, default=1337,
                         help='Random seed (default: 1337)')
+    parser.add_argument('--use_sum', action='store_true',
+                        help='Sum within each bin instead of average')
 
     # TODO add option to ignore blacklisted or masked regions
     args = parser.parse_args()
