@@ -4,7 +4,7 @@ from setuptools import find_packages
 
 
 def setup_package():
-    install_requires = ['numpy', 'pandas', 'pyBigWig', 'enformer-pytorch']
+    install_requires = ['numpy<2', 'pandas', 'pyBigWig', 'enformer-pytorch']
     metadata = dict(
         name='enformer_loader',
         version='0.0.1',
