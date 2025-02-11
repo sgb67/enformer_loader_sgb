@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Session genome="/Users/sb79/graft/Dataset/reference/hg38_galGal6_full/fasta/GRCh38.GRCg6a.full.renamed.merged.fa" locus="hg38_1:165620867-165893153" nextAutoscaleGroup="2" version="8">
+    <Resources>
+        <Resource path="/Users/sb79/parts_sb79/final/bw/merged_H3K9me3_HEK293FT_bamcov_50.bw" type="bw"/>
+        <Resource path="/Users/sb79/parts_sb79/tmp_output/H3K9me3_DT40_R2_bamcov.bw" type="bw"/>
+        <Resource path="/Users/sb79/parts_sb79/tmp_output/H3K9me3_5c3_R1_bamcov.bw" type="bw"/>
+        <Resource path="/Users/sb79/graft/Dataset/reference/hg38_galGal6_chr1/gtf/GRCh38.GRCg6a.chr1.110.gtf" type="gtf"/>
+        <Resource path="/Users/sb79/parts_sb79/tmp_output/H3K9me3_HEK293FT_R2_bamcov.bw" type="bw"/>
+        <Resource path="/Users/sb79/parts_sb79/tmp_output/H3K9me3_5c3_R3_bamcov.bw" type="bw"/>
+        <Resource path="/Users/sb79/parts_sb79/enformer_loader_sgb/tests/data/predictions/hg38_1/enformer_fullpreds_H3K9me3.bedGraph" type="bedgraph"/>
+        <Resource path="/Users/sb79/parts_sb79/enformer_loader_sgb/tests/data/predictions/hg38_1/enformer_fullpreds_H3K9me3_model2.bedGraph" type="bedgraph"/>
+        <Resource path="/Users/sb79/parts_sb79/enformer_loader_sgb/tests/data/predictions/20240109_enformer_fullpreds_HEK293_H3K9me3.bedGraph" type="bedgraph"/>
+        <Resource path="/Users/sb79/parts_sb79/tmp_output/H3K9me3_DT40_R1_bamcov.bw" type="bw"/>
+        <Resource path="/Users/sb79/parts_sb79/tmp_output/H3K9me3_5c3_R2_bamcov.bw" type="bw"/>
+        <Resource path="/Users/sb79/parts_sb79/tmp_output/H3K9me3_HEK293FT_R1_bamcov.bw" type="bw"/>
+    </Resources>
+    <Panel height="457" name="DataPanel" width="1133">
+        <Track attributeKey="H3K9me3_DT40_R2_bamcov.bw" autoScale="true" clazz="org.broad.igv.track.DataSourceTrack" color="153,51,0" fontSize="10" id="/Users/sb79/parts_sb79/tmp_output/H3K9me3_DT40_R2_bamcov.bw" name="H3K9me3_DT40_R2_bamcov.bw" renderer="BAR_CHART" visible="true" windowFunction="mean">
+            <DataRange baseline="0.0" drawBaseline="true" flipAxis="false" maximum="0.0734171" minimum="0.0" type="LINEAR"/>
+        </Track>
+        <Track attributeKey="H3K9me3_DT40_R1_bamcov.bw" autoScale="true" clazz="org.broad.igv.track.DataSourceTrack" color="153,51,0" fontSize="10" id="/Users/sb79/parts_sb79/tmp_output/H3K9me3_DT40_R1_bamcov.bw" name="H3K9me3_DT40_R1_bamcov.bw" renderer="BAR_CHART" visible="true" windowFunction="mean">
+            <DataRange baseline="0.0" drawBaseline="true" flipAxis="false" maximum="0.0327417" minimum="0.0" type="LINEAR"/>
+        </Track>
+        <Track attributeKey="H3K9me3_5c3_R1_bamcov.bw" autoScale="true" clazz="org.broad.igv.track.DataSourceTrack" color="204,0,204" fontSize="10" id="/Users/sb79/parts_sb79/tmp_output/H3K9me3_5c3_R1_bamcov.bw" name="H3K9me3_5c3_R1_bamcov.bw" renderer="BAR_CHART" visible="true" windowFunction="mean">
+            <DataRange baseline="0.0" drawBaseline="true" flipAxis="false" maximum="0.455792" minimum="0.0" type="LINEAR"/>
+        </Track>
+        <Track attributeKey="H3K9me3_5c3_R2_bamcov.bw" autoScale="true" clazz="org.broad.igv.track.DataSourceTrack" color="204,0,204" fontSize="10" id="/Users/sb79/parts_sb79/tmp_output/H3K9me3_5c3_R2_bamcov.bw" name="H3K9me3_5c3_R2_bamcov.bw" renderer="BAR_CHART" visible="true" windowFunction="mean">
+            <DataRange baseline="0.0" drawBaseline="true" flipAxis="false" maximum="0.6210387" minimum="0.0" type="LINEAR"/>
+        </Track>
+        <Track attributeKey="H3K9me3_5c3_R3_bamcov.bw" autoScale="true" clazz="org.broad.igv.track.DataSourceTrack" color="204,0,204" fontSize="10" id="/Users/sb79/parts_sb79/tmp_output/H3K9me3_5c3_R3_bamcov.bw" name="H3K9me3_5c3_R3_bamcov.bw" renderer="BAR_CHART" visible="true" windowFunction="mean">
+            <DataRange baseline="0.0" drawBaseline="true" flipAxis="false" maximum="0.39374697" minimum="0.0" type="LINEAR"/>
+        </Track>
+        <Track attributeKey="H3K9me3_HEK293FT_R1_bamcov.bw" autoScale="true" clazz="org.broad.igv.track.DataSourceTrack" fontSize="10" id="/Users/sb79/parts_sb79/tmp_output/H3K9me3_HEK293FT_R1_bamcov.bw" name="H3K9me3_HEK293FT_R1_bamcov.bw" renderer="BAR_CHART" visible="true" windowFunction="mean">
+            <DataRange baseline="0.0" drawBaseline="true" flipAxis="false" maximum="0.822829" minimum="0.0" type="LINEAR"/>
+        </Track>
+        <Track attributeKey="H3K9me3_HEK293FT_R2_bamcov.bw" autoScale="true" clazz="org.broad.igv.track.DataSourceTrack" fontSize="10" id="/Users/sb79/parts_sb79/tmp_output/H3K9me3_HEK293FT_R2_bamcov.bw" name="H3K9me3_HEK293FT_R2_bamcov.bw" renderer="BAR_CHART" visible="true" windowFunction="mean">
+            <DataRange baseline="0.0" drawBaseline="true" flipAxis="false" maximum="0.665521" minimum="0.0" type="LINEAR"/>
+        </Track>
+        <Track attributeKey="merged_H3K9me3_HEK293FT_bamcov_50.bw" autoScale="true" clazz="org.broad.igv.track.DataSourceTrack" fontSize="10" id="/Users/sb79/parts_sb79/final/bw/merged_H3K9me3_HEK293FT_bamcov_50.bw" name="merged_H3K9me3_HEK293FT_bamcov_50.bw" renderer="BAR_CHART" visible="true" windowFunction="mean">
+            <DataRange baseline="0.0" drawBaseline="true" flipAxis="false" maximum="0.6657637" minimum="0.0" type="LINEAR"/>
+        </Track>
+        <Track attributeKey="enformer predictions (H3K9me3)" autoScale="true" clazz="org.broad.igv.track.DataSourceTrack" fontSize="10" id="/Users/sb79/parts_sb79/enformer_loader_sgb/tests/data/predictions/hg38_1/enformer_fullpreds_H3K9me3.bedGraph" name="enformer predictions (H3K9me3)" renderer="BAR_CHART" visible="true" windowFunction="none">
+            <DataRange baseline="0.0" drawBaseline="true" flipAxis="false" maximum="3.0193393" minimum="0.0" type="LOG"/>
+        </Track>
+        <Track attributeKey="enformer predictions (HEK293_H3K9me3)" autoScale="false" clazz="org.broad.igv.track.DataSourceTrack" colorScale="ContinuousColorScale;0.0;10.0;255,255,255;0,0,178" fontSize="10" id="/Users/sb79/parts_sb79/enformer_loader_sgb/tests/data/predictions/20240109_enformer_fullpreds_HEK293_H3K9me3.bedGraph" name="enformer predictions (HEK293_H3K9me3)" renderer="BAR_CHART" visible="true" windowFunction="mean">
+            <DataRange baseline="0.0" drawBaseline="true" flipAxis="false" maximum="10.0" minimum="0.0" type="LOG"/>
+        </Track>
+        <Track attributeKey="enformer model2 predictions (H3K9me3)" autoScale="true" clazz="org.broad.igv.track.DataSourceTrack" fontSize="10" id="/Users/sb79/parts_sb79/enformer_loader_sgb/tests/data/predictions/hg38_1/enformer_fullpreds_H3K9me3_model2.bedGraph" name="enformer model2 predictions (H3K9me3)" renderer="BAR_CHART" visible="true" windowFunction="mean">
+            <DataRange baseline="0.0" drawBaseline="true" flipAxis="false" maximum="0.9015689" minimum="0.0" type="LINEAR"/>
+        </Track>
+    </Panel>
+    <Panel height="705" name="FeaturePanel" width="1133">
+        <Track attributeKey="Reference sequence" clazz="org.broad.igv.track.SequenceTrack" fontSize="10" id="Reference sequence" name="Reference sequence" sequenceTranslationStrandValue="+" shouldShowTranslation="true" visible="true"/>
+        <Track attributeKey="GRCh38.GRCg6a.chr1.110.gtf" clazz="org.broad.igv.track.FeatureTrack" displayMode="EXPANDED" featureVisibilityWindow="2000000" fontSize="10" groupByStrand="false" height="80" id="/Users/sb79/graft/Dataset/reference/hg38_galGal6_chr1/gtf/GRCh38.GRCg6a.chr1.110.gtf" name="GRCh38.GRCg6a.chr1.110.gtf" visible="true"/>
+    </Panel>
+    <PanelLayout dividerFractions="0.788659793814433"/>
+    <Regions>
+        <Region chromosome="gg6_1" end="26514163" start="25963903"/>
+    </Regions>
+    <HiddenAttributes>
+        <Attribute name="DATA FILE"/>
+        <Attribute name="DATA TYPE"/>
+        <Attribute name="NAME"/>
+    </HiddenAttributes>
+</Session>
